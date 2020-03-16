@@ -20,12 +20,28 @@
 		Przeciw nim sterczy biała, wąska, zaostrzona,<br>
 		Jak głaz bodzący morze, reduta Ordona.</p>
 		
-		<textarea rows="15" cols="50"></textarea><br>
-		
+		<textarea id="poem" rows="15" cols="50" onkeydown="typing()"></textarea><br>
+		<br><br>
+		<span id="numberOfWords" style="font-size: 40px;"></span>
+
 		<script>
-			// a JavaScript code here ...
+			function typing(){
+
+				var timer = setTimeout(countWords, 30000);	
+
+			}
+
+			function countWords() {
+				  let text = document.getElementById("poem").value;
+				  let words = text.split(" ");
+				  document.getElementById("numberOfWords").innerHTML = "You wrote " + words.length + " word/s";
+			}
 			
 		</script>
 		
 	</body>
 </html>
+
+
+
+
