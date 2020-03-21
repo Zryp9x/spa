@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>people</title>
+</head>
+<body>
+    <input type="button" value="Display people" onclick="display()"> 
+    <div id="data"></div>
+    <script>
+function display(){
+		var request = new XMLHttpRequest();
+		request.onreadystatechange = function () {
+		if (this.readyState==4 && this.status==200){
+		let json = JSON.parse(this.responseText);
+        for(let i=0;i < json.length; i++){
+		document.getElementById("data").innerHTML += i+1 + ". " + json[i].name + ", " + json[i].surname + ", " + json[i].age + ", " + json[i].country + ", " + json[i].email + "<br>";
+        }
+		}
+		};
+		request.open('GET', 'people.json');
+		request.send()
+
+}
+    </script>
+</body>
+</html>

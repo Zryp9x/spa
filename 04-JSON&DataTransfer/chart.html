@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css" integrity="sha256-IvM9nJf/b5l2RoebiFno92E5ONttVyaEEsdemDC6iQA=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js" integrity="sha256-8zyeSXm+yTvzUN1VgAOinFgaVFEFTyYzWShOy9w7WoQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js" integrity="sha256-TQq84xX6vkwR0Qs1qH5ADkP+MvH0W+9E7TdHJsoIQiM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js" integrity="sha256-nZaxPHA2uAaquixjSDX19TmIlbRNCOrf5HO1oHl5p70=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <canvas id="myChart" width="100%" height="100%"></canvas>
+    <script>
+
+
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    
+    var request = new XMLHttpRequest();
+		request.onreadystatechange = function () {
+		if (this.readyState==4 && this.status==200){
+		let json = JSON.parse(this.responseText);
+
+        var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [json[0].data, json[1].data,json[2].data, json[3].data, json[4].data, json[5].data, json[6].data, json[7].data, json[8].data, json[9].data],
+            datasets: [{
+                label: 'The last 10 gold price quotations',
+                data: [json[0].cena,json[1].cena,json[2].cena,json[3].cena,json[4].cena,json[5].cena,json[6].cena,json[7].cena,json[8].cena,json[9].cena],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(51,204,51,0.2)',
+                    'rgba(102,51,51,0.2)',
+                    'rgba(102,204,255,0.2)',
+                    'rgba(51,0,51,0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(51,204,51,1)',
+                    'rgba(102,51,51,1)',
+                    'rgba(102,204,255,1)',
+                    'rgba(51,0,51,1)'
+                    
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+
+
+
+
+		}
+		};
+		request.open('GET', 'http://api.nbp.pl/api/cenyzlota/last/10/?format=json');
+		request.send();
+
+
+    </script>
+    
+</body>
+</html>
