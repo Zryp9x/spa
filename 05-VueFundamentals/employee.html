@@ -4,18 +4,29 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+
+  <div id="app">
+
+    <p>Name: {{name1}}</p>
+    <p v-if="name2">Name: {{name2}}</p>
+    <p>Surname: {{surname}}</p>
+    <p v-if="foreigner == false">Pesel: {{pesel}}</p>
+    <p v-else>Narodowość: {{nationality}}</p>
+    <p>Address: {{address}}</p>
+
+  </div> 
+
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        name1: 'Adam',
-        name2: 'Jan',
-        surname: 'Majewski',
-        foreigner: false,
-        nationality: 'Polish',
+        name1: 'John',
+        surname: 'Brown',
+        foreigner: true,
+        nationality: 'USA',
         pesel: '92021708229',
-        address: 'ul. Szeroka 3, Kraków',
-    });
+        address: 'Holland Drive 4, Chicago',
+    }});
   </script>
 
 </body>
