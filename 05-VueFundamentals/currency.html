@@ -29,7 +29,7 @@
         currencies: []
         },
           mounted () {
-    axios.get('http://api.nbp.pl/api/exchangerates/tables/a/?format=json').then(response => (this.currencies = response.rates))
+    axios.get('http://api.nbp.pl/api/exchangerates/tables/a/?format=json').then(response => (this.currencies = response.data[0].rates))
   }
       
     
