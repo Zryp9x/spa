@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="checkbox" value="PSM"  v-model="subjects">Administracja sieciami komputerowymi<br>
+    <input type="checkbox" value="SPA" v-model="subjects">Pracowania programowania II<br>
+    <input type="checkbox" value="PP5" v-model="subjects">Programowanie współbieżne<br>
+    <input type="checkbox" value="ASK" v-model="subjects">Systemy operacyjne<br>
+    <input type="checkbox" value="SO" v-model="subjects">E-biznes<br>
+    <p>selected subjects: {{subjects.length}}</p>
+
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        subjects: []
+      },
+    });
+  </script>
+
+</body>
+</html>

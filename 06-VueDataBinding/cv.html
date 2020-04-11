@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h4>Imię: </h4>
+    <input type="text" v-model="cv.name">
+    <h4>Nazwisko: </h4>
+    <input type="text" v-model="cv.surname">
+    <h4>Wiek:</h4>
+    <input type="number" v-model.number="cv.age">
+    <h4>Płeć:</h4>
+    <input type="checkbox" v-model="cv.Male">Mężczyzna
+    <input type="checkbox" v-model="cv.Famale">Kobieta
+    <h4>Wykształcenie: </h4>
+    <select v-model="cv.education">
+        <option >Brak</option>
+        <option >Podstawowe</option>
+        <option >Średnie</option>
+        <option >Wyższe</option>
+    </select>
+    <h4>Umiejętnośći: </h4>
+    <input type="checkbox" value="Obsługa komputera" v-model="cv.Skills">Obsługa komputera
+    <input type="checkbox" value="Prawo jazdy" v-model="cv.Skills">Prawo jazdy
+    <input type="checkbox" value="Kreatywność" v-model="cv.Skills">Kreatywność
+    <input type="checkbox" value="Praca w zespole" v-model="cv.Skills">Praca w zespole
+
+    <br /><br />
+    <button type="button" @click="saveLocalStorage()">Save</button>
+    <button type="button" @click="readLocalStorage()">Read</button>
+    <ul v-if="readButton">
+        <li v-for="(value, key) in readLocalStorage()">{{ key }}: {{ value }}</li>
+    </ul>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+          readButton: false,
+          cv: {
+            name:'',
+            surname: '',
+            age: 0,
+            Famale: false,
+            Male: false,
+            Education: '',
+            Skills: []
+      }},
+      methods: {
+          saveLocalStorage(){
+              localStorage.setItem('cv_data', JSON.stringify(this.cv))
+          },
+          readLocalStorage(){
+              this.readButton = true
+              return JSON.parse(localStorage.getItem('cv_data'))
+              }
+          }
+      }
+    );
+  </script>
+
+</body>
+</html>
