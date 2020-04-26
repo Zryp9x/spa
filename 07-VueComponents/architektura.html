@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id='component'>
+    <h2>Architektura von Neumanna</h2>
+    <blog-post
+    v-for="post in posts"
+    v-bind:key="post.id"
+    v-bind:nazwa="post.nazwa"
+  ></blog-post>
+</div>
+</body>
+<script>
+Vue.component('blog-post', {
+  props: ['nazwa'],
+  template: '<h4>{{ nazwa }}</h4>'
+})
+
+
+new Vue({
+  el: '#component',
+  data: {
+    posts: [
+      { id: 1, nazwa: 'Pamięć komputerowa' },
+      { id: 2, nazwa: 'Urządzenia wejścia/wyjścia' },
+      { id: 3, nazwa: 'Jednostka sterująca' },
+      { id: 4, nazwa: 'Jednostka arytmetyczno-logiczna' }
+    ]
+  }
+})
+</script>
+</html>

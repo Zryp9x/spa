@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+    <div id="app">
+<binarycalculator></binarycalculator>
+    </div>
+
+<script>
+
+
+
+Vue.component('binarycalculator',{
+    data: function(){
+        return{
+            count: 0
+        }
+    },
+    methods:{
+      oblicz: function(x){
+          this.count = (x >>> 0).toString(2);
+          this.count = x + "(10) = " + this.count + "(2)";
+          return count;
+      }},
+      template:`
+      <div>
+        <h2>{{ count }}</h2>
+        <button @click=oblicz(8)>Oblicz z 8</button>
+        <button @click=oblicz(170)>Oblicz z 170</button>
+        <button @click=oblicz(204)>Oblicz z 204</button>
+        <button @click=oblicz(3855)>Oblicz z 3855</button>
+
+    </div>`
+})    
+
+new Vue({
+      el: "#app"
+    })
+</script>
+</html>

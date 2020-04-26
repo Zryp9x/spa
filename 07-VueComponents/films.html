@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id='component'>
+  <film_1></film_1>
+  <film_2></film_2>
+  <film_3></film_3>
+</div>
+</body>
+<script>
+Vue.component('film_1',{
+  template: '<p>Tytuł: SKAZANI NA SHAWSHANK,Reżyser: Frank Darabont,Rok produkcji: 1994</p>'
+})
+
+Vue.component('film_2',{
+  template: '<p>Tytuł: NIETYKALNI,Reżyser: Olivier Nakache / Éric Toledano,Rok produkcji: 2011</p>'
+})
+Vue.component('film_3',{
+  template: '<p>Tytuł: ZIELONA MILA,Reżyser: Frank Darabont,Rok produkcji: 1996</p>'
+})
+
+new Vue({
+  el: '#component'
+})
+</script>
+</html>
